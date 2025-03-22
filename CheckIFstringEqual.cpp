@@ -9,17 +9,22 @@ string solve(string a,string b){
     int second=-1;
     for(int i=0;i<a.size();i++){
         if(a[i]!=b[i]){
-            count++;
-            if(count>2) return "false";
-            if(first==-1) first=i;
-            else second=i;
+            if(first==-1){
+                first=i;
+            }else if(second==-1){
+                second=i;
+            }else{
+                return "false";
+            }
         }
     }
-    if(count!=2) return "false";
-        swap(a[first],a[second]);
-        if(a==b) return "true";
-        else return "false";
-}
+    if(second==-1)
+        return "false";
+    swap(a[first],a[second]);
+    if(a==0) return "true";
+    else return "false";
+} 
+
 int main(){
     string a;
     getline(cin,a);
